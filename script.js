@@ -1,67 +1,112 @@
+const caixaPrincipal = document.querySelector(".caixa-principal");
+const caixaPerguntas = document.querySelector(".caixa-perguntas");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
+const caixaResultado = document.querySelector(".caixa-resultado");
+const textoResultado = document.querySelector(".texto-resultado");
+
 const perguntas = [
     {
-        enunciado: "Sua escola acabou de implementar um assistente virtual com Inteligência Artificial para ajudar os alunos nos estudos diários. Qual é a sua primeira reação ao descobrir a novidade?",
+        enunciado: "Sua escola decidiu implementar um assistente virtual de IA para ajudar os alunos com as tarefas de casa. Como você reage no primeiro dia de uso?",
         alternativas: [
             {
-                texto: "Fico receoso, preferindo métodos tradicionais de estudo.",
-                afirmacao: "No início, sentiu receio sobre como a automação mudaria sua rotina escolar."
+                texto: "Acho incrível! Vai tornar o aprendizado mais personalizado e dinâmico.",
+                afirmacao: "Enxergou a IA como uma grande aliada para otimizar seus estudos desde o início."
             },
             {
-                texto: "Fico empolgado para testar todas as funcionalidades imediatamente.",
-                afirmacao: "Buscou logo entender o potencial das ferramentas tecnológicas no aprendizado."
+                texto: "Fico com o pé atrás. Prefiro aprender do jeito tradicional com professores e livros.",
+                afirmacao: "Manteve uma postura cautelosa, valorizando os métodos de ensino tradicionais e humanos."
             }
         ]
     },
     {
-        enunciado: "Em uma aula de história, a professora pede um resumo sobre a Revolução Industrial. Como você decide utilizar a IA nessa tarefa?",
+        enunciado: "Durante uma aula de história, o professor pede um debate sobre o uso de robôs e IA na medicina. Qual é a sua principal intervenção na conversa?",
         alternativas: [
             {
-                texto: "Uso a IA para resumir pontos complexos e explico os conceitos com minhas próprias palavras.",
-                afirmacao: "Aprendeu a usar a tecnologia como suporte para aprofundar seu próprio conhecimento."
+                texto: "Defendo que a IA pode diagnosticar doenças com mais precisão e salvar vidas rapidamente.",
+                afirmacao: "Tornou-se um entusiasta do uso da tecnologia para avanços na saúde e na ciência."
             },
             {
-                texto: "Faço o resumo lendo livros da biblioteca e artigos acadêmicos por conta própria.",
-                afirmacao: "Desenvolveu forte autonomia de pesquisa utilizando fontes bibliográficas tradicionais."
+                texto: "Aporto que a IA não pode substituir a empatia e o cuidado humano de um médico de verdade.",
+                afirmacao: "Defendeu a ideia de que o toque humano é insubstituível em profissões essenciais."
             }
         ]
     },
     {
-        enunciado: "Durante um debate em sala sobre ética e IA, surge a discussão sobre direitos autorais em artes geradas por algoritmo. Qual posicionamento você defende?",
+        enunciado: "Para a feira de ciências, sua equipe precisa apresentar um projeto sobre sustentabilidade. Alguém sugere criar um código com IA para prever o desperdício de água na escola. O que você faz?",
         alternativas: [
             {
-                texto: "Acredito que artes geradas por IA são novas formas de expressão e devem ser incentivadas.",
-                afirmacao: "Tornou-se um defensor da inovação artística e da integração da tecnologia nas artes."
+                texto: "Apoio a ideia e me disponho a aprender como programar prompts e usar a IA para o projeto.",
+                afirmacao: "Desenvolveu habilidades de resolução de problemas aplicando IA em causas ambientais."
             },
             {
-                texto: "Defendo que a arte feita por humanos deve ser valorizada e protegida contra plágios virtuais.",
-                afirmacao: "Engajou-se em causas para valorizar o trabalho autoral e a ética na criação artística."
+                texto: "Sugiro fazermos uma pesquisa de campo e entrevistas presenciais com os alunos e funcionários primeiro.",
+                afirmacao: "Priorizou a coleta de dados reais e a interação humana antes de confiar em algoritmos."
             }
         ]
     },
     {
-        enunciado: "Para a feira de ciências, o seu grupo precisa apresentar um protótipo visual. Como você prefere elaborar a apresentação visual?",
+        enunciado: "Você descobre que uma imagem feita por IA ganhou um concurso de arte local, gerando polêmica entre os artistas da cidade. Qual é o seu posicionamento?",
         alternativas: [
             {
-                texto: "Crio os diagramas e ilustrações usando softwares de edição tradicionais.",
-                afirmacao: "Aprimorou suas habilidades manuais e digitais em softwares tradicionais de edição."
+                texto: "Acho válido, pois criar prompts detalhados também exige criatividade e expressão artística.",
+                afirmacao: "Passou a enxergar as ferramentas digitais e a IA como novas formas de manifestação artística."
             },
             {
-                texto: "Utilizo um gerador de imagens por IA para criar maquetes conceituais em segundos.",
-                afirmacao: "Otimizou o tempo de produção de projetos visuais usando plataformas de IA generativa."
+                texto: "Acho injusto com quem passou anos treinando técnicas manuais de pintura e desenho.",
+                afirmacao: "Valorizou o esforço técnico manual e tornou-se um defensor dos direitos dos artistas tradicionais."
             }
         ]
     },
     {
-        enunciado: "Um colega do seu grupo de estudos entregou um trabalho gerado inteiramente por IA sem fazer qualquer revisão, contendo informações incorretas. O que você faz?",
+        enunciado: "Um colega de classe confessa que usou IA para gerar um trabalho inteiro de literatura sem ler o livro indicado. Como você aconselha esse colega?",
         alternativas: [
             {
-                texto: "Acho válido entregar assim para poupar tempo, já que a IA costuma estar certa.",
-                afirmacao: "Acabou se tornando muito dependente da tecnologia, deixando de checar a veracidade dos dados."
+                texto: "Aviso que ele perdeu a oportunidade de aprender e que a IA pode ter inventado fatos sobre o livro (alucinação).",
+                afirmacao: "Compreendeu a importância do pensamento crítico e da checagem de fatos ao usar ferramentas de IA."
             },
             {
-                texto: "Explico que a IA comete erros e ajudo a revisar o texto com fontes confiáveis.",
-                afirmacao: "Compreendeu a importância do pensamento crítico e da checagem de fatos na era da informação."
+                texto: "Digo que ele fez bem em economizar tempo, desde que o texto pareça bem escrito e passe despercebido.",
+                afirmacao: "Percebeu mais tarde os riscos do plágio e a necessidade de usar a tecnologia de forma ética."
             }
         ]
-    },
+    }
 ];
+
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+
+function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
+}
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacoes + " ";
+    atual++;
+    mostraPergunta();
+}
+
+function mostraResultado() {
+    caixaPerguntas.textContent = "Em 2049...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
+}
+
+mostraPergunta();
